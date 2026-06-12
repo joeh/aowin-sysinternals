@@ -7,8 +7,10 @@ function Install-SysinternalsSuite {
     )
 
     $url = "https://download.sysinternals.com/files/SysinternalsSuite.zip"
-    $zipPath = Join-Path $env:TEMP "SysinternalsSuite.zip"
-
+    
+    $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+    $zipPath = Join-Path $env:TEMP "SysinternalsSuite-$timestamp.zip"
+    
     if ((Test-Path $Destination) -and -not $Overwrite) {
         Write-Host "Destination already exists: $Destination"
         Write-Host "Use -Overwrite to replace it."
